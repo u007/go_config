@@ -1,7 +1,7 @@
 package go_config
 
 import (
-	"github.com/astaxie/beego"
+	// "github.com/astaxie/beego"
 	// "github.com/astaxie/beego/config"
 	"github.com/go-ini/ini"
 	"fmt"
@@ -13,15 +13,14 @@ type IniConfigLoader struct {
 	loader *ini.File
 }
 
-func NewConfigLoader(type string, file string) (*IniConfigLoader, error) {
-  if(type == "ini") {
+func NewConfigLoader(_type string, file string) (*IniConfigLoader, error) {
+  if(_type == "ini") {
     config := new(IniConfigLoader)
   	_, err := config.load(file)
+		return config, err
   } else {
-    return _, fmt.Errorf("NewConfigLoader: unsupported format: %s", type)
+    return nil, fmt.Errorf("NewConfigLoader: unsupported format: %s", _type)
   }
-	
-	return config, err
 }
 
 func (this *IniConfigLoader) GetSection(name string) (*ini.Section, error) {
