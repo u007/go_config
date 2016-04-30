@@ -1,3 +1,5 @@
+package go_config
+
 import (
 	"github.com/astaxie/beego"
 	// "github.com/astaxie/beego/config"
